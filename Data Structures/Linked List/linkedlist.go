@@ -19,11 +19,13 @@ func (linkedList *LinkedList) prepend(value int) {
 
 	if linkedList.length == 0 {
 		newNode.next = nil
+		linkedList.length++
 		return
 	}
 
 	newNode.next = linkedList.head
 	linkedList.head = &newNode
+	linkedList.length++
 	return
 }
 
@@ -51,10 +53,31 @@ func (linkedList *LinkedList) append(value int) {
 	}
 }
 
+// Add value to specified index of Linked list
+func (linkedList *LinkedList) insert(index, value int) {
+	newNode := Node{}
+	newNode.value = value
+
+	if index >= linkedList.length {
+		linkedList.append(value)
+		return
+	}
+
+	ptr := linkedList.head
+	for i := 0; i != index-1; {
+		ptr = ptr.next
+		i++
+	}
+	newNode.next = ptr.next
+	ptr.next = &newNode
+	linkedList.length++
+}
+
 func main() {
 	l := LinkedList{}
 	l.append(10)
 	l.append(15)
 	l.prepend(4)
-	fmt.Print(l.head)
+	l.insert(1, 12)
+	fmt.Print(l.head.value)
 }
