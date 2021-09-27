@@ -63,6 +63,11 @@ func (linkedList *LinkedList) insert(index, value int) {
 		return
 	}
 
+	if index == 0 {
+		linkedList.prepend(value)
+		return
+	}
+
 	ptr := linkedList.head
 	for i := 0; i != index-1; {
 		ptr = ptr.next
@@ -73,11 +78,23 @@ func (linkedList *LinkedList) insert(index, value int) {
 	linkedList.length++
 }
 
+func (linkedList *LinkedList) display() {
+	ptr := linkedList.head
+	for i := 0; i < linkedList.length; i++ {
+		fmt.Print(" ", ptr.value)
+		ptr = ptr.next
+	}
+}
+
 func main() {
 	l := LinkedList{}
 	l.append(10)
 	l.append(15)
 	l.prepend(4)
 	l.insert(1, 12)
-	fmt.Print(l.head.value)
+	l.prepend(23)
+	l.insert(0, 1)
+	l.insert(43, 31)
+	l.append(21)
+	l.display()
 }
