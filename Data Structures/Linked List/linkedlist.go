@@ -78,6 +78,24 @@ func (linkedList *LinkedList) insert(index, value int) {
 	linkedList.length++
 }
 
+// Remove a value from the list
+func (linkedList *LinkedList) remove(position int) {
+	if position > linkedList.length {
+		fmt.Println("Error: position should be less than linked list length")
+		return
+	}
+	ptr := linkedList.head
+	for i := 0; i <= position-1; i++ {
+		if i == position-1 {
+			ptr.next = ptr.next.next
+			linkedList.length--
+			return
+		}
+		ptr = ptr.next
+	}
+
+}
+
 func (linkedList *LinkedList) display() {
 	ptr := linkedList.head
 	for i := 0; i < linkedList.length; i++ {
@@ -96,5 +114,6 @@ func main() {
 	l.insert(0, 1)
 	l.insert(43, 31)
 	l.append(21)
+	l.remove(5)
 	l.display()
 }
