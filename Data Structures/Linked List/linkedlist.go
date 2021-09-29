@@ -101,8 +101,8 @@ func (linkedList *LinkedList) remove(position int) {
 
 }
 
-// Remove value from begining
-func (linkedList *LinkedList) removeFromBegining() {
+// Remove value from beginning
+func (linkedList *LinkedList) removeFromBeginning() {
 	if linkedList.length == 0 {
 		fmt.Println("Error: Linked List is empty")
 		return
@@ -153,7 +153,7 @@ func main() {
 	l.insert(43, 31)
 	l.append(21)
 	l.remove(2)
-	l.removeFromBegining()
+	l.removeFromBeginning()
 	l.removeFromEnd()
 	l.display()
 }
