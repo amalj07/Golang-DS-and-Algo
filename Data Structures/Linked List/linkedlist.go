@@ -55,6 +55,11 @@ func (linkedList *LinkedList) append(value int) {
 
 // Add value to specified index of Linked list
 func (linkedList *LinkedList) insert(index, value int) {
+	if index < 0 {
+		fmt.Println("Error: Invalid index")
+		return
+	}
+
 	newNode := Node{}
 	newNode.value = value
 
@@ -80,8 +85,8 @@ func (linkedList *LinkedList) insert(index, value int) {
 
 // Remove a value from the list
 func (linkedList *LinkedList) remove(position int) {
-	if position > linkedList.length {
-		fmt.Println("Error: position should be less than linked list length")
+	if position > linkedList.length-1 || position < 0 {
+		fmt.Println("Error: Invalid position")
 		return
 	}
 	ptr := linkedList.head
@@ -96,24 +101,59 @@ func (linkedList *LinkedList) remove(position int) {
 
 }
 
-func (linkedList *LinkedList) display() {
+// Remove value from begining
+func (linkedList *LinkedList) removeFromBegining() {
+	if linkedList.length == 0 {
+		fmt.Println("Error: Linked List is empty")
+		return
+	}
+
+	linkedList.head = linkedList.head.next
+	linkedList.length--
+	return
+}
+
+// Remove value from end
+func (linkedList *LinkedList) removeFromEnd() {
+	if linkedList.length == 0 {
+		fmt.Println("Error: Linked List is empty")
+		return
+	}
+
 	ptr := linkedList.head
-	for i := 0; i < linkedList.length; i++ {
-		fmt.Print(" ", ptr.value)
+	for i := 0; i < linkedList.length-1; i++ {
+		if i == linkedList.length-2 {
+			ptr.next = nil
+			linkedList.length--
+			return
+		}
 		ptr = ptr.next
 	}
+}
+
+func (linkedList *LinkedList) display() {
+	if linkedList.length == 0 {
+		fmt.Println("Linked list is empty")
+		return
+	}
+	ptr := linkedList.head
+	for i := 0; i < linkedList.length; i++ {
+		fmt.Print(ptr.value, " ")
+		ptr = ptr.next
+	}
+	fmt.Printf("\nLength: %d", linkedList.length)
 }
 
 func main() {
 	l := LinkedList{}
 	l.append(10)
-	l.append(15)
 	l.prepend(4)
 	l.insert(1, 12)
-	l.prepend(23)
 	l.insert(0, 1)
 	l.insert(43, 31)
 	l.append(21)
-	l.remove(5)
+	l.remove(2)
+	l.removeFromBegining()
+	l.removeFromEnd()
 	l.display()
 }
