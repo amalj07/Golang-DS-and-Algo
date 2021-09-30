@@ -52,6 +52,7 @@ func (doublyLinkedList *DoublyLinkedList) prepend(value int) {
 	return
 }
 
+// Add a value to a specific position of the list
 func (doublyLinkedList *DoublyLinkedList) insert(position, value int) {
 	if position < 0 {
 		fmt.Println("Error: Invalid position")
@@ -68,6 +69,60 @@ func (doublyLinkedList *DoublyLinkedList) insert(position, value int) {
 			ptr.prev.next = &newNode
 			ptr.prev = &newNode
 			doublyLinkedList.length++
+			return
+		}
+		ptr = ptr.next
+	}
+}
+
+// Remove a value from beginning of the list
+func (doublyLinkedList *DoublyLinkedList) removeFromBeginning() {
+	if doublyLinkedList.length == 0 {
+		fmt.Println("Linked List is empty")
+		return
+	}
+
+	prevNode := doublyLinkedList.head.prev
+	nextNode := doublyLinkedList.head.next
+	prevNode.next = nextNode
+	nextNode.prev = prevNode
+	doublyLinkedList.head = nextNode
+	doublyLinkedList.length--
+	return
+}
+
+// Remove a value from end of the list
+func (doublyLinkedList *DoublyLinkedList) removeFromEnd() {
+	if doublyLinkedList.length == 0 {
+		fmt.Println("Linked List is empty")
+		return
+	}
+
+	prevNode := doublyLinkedList.tail.prev
+	nextNode := doublyLinkedList.tail.next
+	prevNode.next = nextNode
+	nextNode.prev = prevNode
+	doublyLinkedList.tail = prevNode
+	doublyLinkedList.length--
+	return
+}
+
+// Remove a value from a specific position
+func (doublyLinkedList *DoublyLinkedList) remove(position int) {
+	if position < 0 || position > doublyLinkedList.length {
+		fmt.Println("Error: Invalid position")
+		return
+	}
+
+	ptr := doublyLinkedList.head
+
+	for i := 0; i < position; i++ {
+		if i == position-1 {
+			prevNode := ptr.prev
+			nextNode := ptr.next
+			prevNode.next = nextNode
+			nextNode.prev = prevNode
+			doublyLinkedList.length--
 			return
 		}
 		ptr = ptr.next
@@ -96,7 +151,9 @@ func main() {
 	dll.append(0)
 	dll.prepend(4)
 	dll.prepend(3)
-	dll.insert(3, 7)
+	dll.insert(0, 7)
+	dll.removeFromBeginning()
+	dll.removeFromEnd()
+	dll.remove(4)
 	dll.display()
-	fmt.Println(dll.head.next.next.value)
 }
