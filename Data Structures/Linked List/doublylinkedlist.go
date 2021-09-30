@@ -27,6 +27,7 @@ func (doublyLinkedlist *DoublyLinkedList) append(value int) {
 
 	newNode.next = doublyLinkedlist.head
 	newNode.prev = doublyLinkedlist.tail
+	doublyLinkedlist.head.prev = &newNode
 	doublyLinkedlist.tail.next = &newNode
 	doublyLinkedlist.tail = &newNode
 	doublyLinkedlist.length++
@@ -47,6 +48,7 @@ func (doublyLinkedList *DoublyLinkedList) prepend(value int) {
 	newNode.next = doublyLinkedList.head
 	newNode.prev = doublyLinkedList.tail
 	doublyLinkedList.head.prev = &newNode
+	doublyLinkedList.tail.next = &newNode
 	doublyLinkedList.head = &newNode
 	doublyLinkedList.length++
 	return
@@ -56,6 +58,16 @@ func (doublyLinkedList *DoublyLinkedList) prepend(value int) {
 func (doublyLinkedList *DoublyLinkedList) insert(position, value int) {
 	if position < 0 {
 		fmt.Println("Error: Invalid position")
+		return
+	}
+
+	if position == 0 {
+		doublyLinkedList.prepend(value)
+		return
+	}
+
+	if position > doublyLinkedList.length {
+		doublyLinkedList.append(value)
 		return
 	}
 
@@ -140,7 +152,7 @@ func (doublyLinkedList *DoublyLinkedList) display() {
 		fmt.Print(ptr.value, " ")
 		ptr = ptr.next
 	}
-	fmt.Printf("\nLength: %d", doublyLinkedList.length)
+	fmt.Printf("\nLength\n: %d", doublyLinkedList.length)
 	return
 }
 
@@ -151,7 +163,7 @@ func main() {
 	dll.append(0)
 	dll.prepend(4)
 	dll.prepend(3)
-	dll.insert(0, 7)
+	dll.insert(10, 7)
 	dll.removeFromBeginning()
 	dll.removeFromEnd()
 	dll.remove(4)

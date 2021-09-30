@@ -12,7 +12,7 @@ type LinkedList struct {
 	length int
 }
 
-// Add value to begining of the list
+// Add value to beginning of the list
 func (linkedList *LinkedList) prepend(value int) {
 	newNode := Node{}
 	newNode.value = value
@@ -54,27 +54,27 @@ func (linkedList *LinkedList) append(value int) {
 }
 
 // Add value to specified index of Linked list
-func (linkedList *LinkedList) insert(index, value int) {
-	if index < 0 {
-		fmt.Println("Error: Invalid index")
+func (linkedList *LinkedList) insert(position, value int) {
+	if position <= 0 {
+		fmt.Println("Error: Invalid position")
 		return
 	}
 
 	newNode := Node{}
 	newNode.value = value
 
-	if index >= linkedList.length {
+	if position >= linkedList.length {
 		linkedList.append(value)
 		return
 	}
 
-	if index == 0 {
+	if position == 1 {
 		linkedList.prepend(value)
 		return
 	}
 
 	ptr := linkedList.head
-	for i := 0; i != index-1; {
+	for i := 0; i != position-1; {
 		ptr = ptr.next
 		i++
 	}
@@ -85,13 +85,24 @@ func (linkedList *LinkedList) insert(index, value int) {
 
 // Remove a value from the list
 func (linkedList *LinkedList) remove(position int) {
-	if position > linkedList.length-1 || position < 0 {
+	if position > linkedList.length || position < 0 {
 		fmt.Println("Error: Invalid position")
 		return
 	}
+
+	if position == 0 {
+		linkedList.removeFromBeginning()
+		return
+	}
+
+	if position == linkedList.length {
+		linkedList.removeFromEnd()
+		return
+	}
+
 	ptr := linkedList.head
-	for i := 0; i <= position-1; i++ {
-		if i == position-1 {
+	for i := 0; i <= position-2; i++ {
+		if i == position-2 {
 			ptr.next = ptr.next.next
 			linkedList.length--
 			return
@@ -141,7 +152,7 @@ func (linkedList *LinkedList) display() {
 		fmt.Print(ptr.value, " ")
 		ptr = ptr.next
 	}
-	fmt.Printf("\nLength: %d", linkedList.length)
+	fmt.Printf("\nLength: %d\n", linkedList.length)
 }
 
 func main() {
@@ -149,10 +160,9 @@ func main() {
 	l.append(10)
 	l.prepend(4)
 	l.insert(1, 12)
-	l.insert(0, 1)
 	l.insert(43, 31)
 	l.append(21)
-	l.remove(2)
+	l.remove(4)
 	l.removeFromBeginning()
 	l.removeFromEnd()
 	l.display()
