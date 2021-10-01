@@ -157,15 +157,15 @@ func (cicularDoublyLinkedList *CircularDoublyLinkedList) display() {
 }
 
 func main() {
-	dll := CircularDoublyLinkedList{}
-	dll.append(10)
-	dll.append(1)
-	dll.append(0)
-	dll.prepend(4)
-	dll.prepend(3)
-	dll.insert(10, 7)
-	dll.removeFromBeginning()
-	dll.removeFromEnd()
-	dll.remove(4)
-	dll.display()
+	cdll := CircularDoublyLinkedList{}
+	cdll.append(10)
+	cdll.append(1)
+	cdll.append(0)
+	cdll.prepend(4)
+	cdll.prepend(3)
+	cdll.insert(10, 7)
+	cdll.removeFromBeginning()
+	cdll.removeFromEnd()
+	cdll.remove(4)
+	cdll.display()
 }
