@@ -8,14 +8,14 @@ type Node struct {
 	next  *Node
 }
 
-type DoublyLinkedList struct {
+type CircularDoublyLinkedList struct {
 	head   *Node
 	tail   *Node
 	length int
 }
 
 // Add a value to end of the list
-func (doublyLinkedlist *DoublyLinkedList) append(value int) {
+func (doublyLinkedlist *CircularDoublyLinkedList) append(value int) {
 	newNode := Node{}
 	newNode.value = value
 	if doublyLinkedlist.length == 0 {
@@ -35,43 +35,43 @@ func (doublyLinkedlist *DoublyLinkedList) append(value int) {
 }
 
 // Add a value to beginning of the list
-func (doublyLinkedList *DoublyLinkedList) prepend(value int) {
+func (cicularDoublyLinkedList *CircularDoublyLinkedList) prepend(value int) {
 	newNode := Node{}
 	newNode.value = value
-	if doublyLinkedList.length == 0 {
-		doublyLinkedList.head = &newNode
-		doublyLinkedList.tail = &newNode
-		doublyLinkedList.length++
+	if cicularDoublyLinkedList.length == 0 {
+		cicularDoublyLinkedList.head = &newNode
+		cicularDoublyLinkedList.tail = &newNode
+		cicularDoublyLinkedList.length++
 		return
 	}
 
-	newNode.next = doublyLinkedList.head
-	newNode.prev = doublyLinkedList.tail
-	doublyLinkedList.head.prev = &newNode
-	doublyLinkedList.tail.next = &newNode
-	doublyLinkedList.head = &newNode
-	doublyLinkedList.length++
+	newNode.next = cicularDoublyLinkedList.head
+	newNode.prev = cicularDoublyLinkedList.tail
+	cicularDoublyLinkedList.head.prev = &newNode
+	cicularDoublyLinkedList.tail.next = &newNode
+	cicularDoublyLinkedList.head = &newNode
+	cicularDoublyLinkedList.length++
 	return
 }
 
 // Add a value to a specific position of the list
-func (doublyLinkedList *DoublyLinkedList) insert(position, value int) {
+func (cicularDoublyLinkedList *CircularDoublyLinkedList) insert(position, value int) {
 	if position < 0 {
 		fmt.Println("Error: Invalid position")
 		return
 	}
 
 	if position == 0 {
-		doublyLinkedList.prepend(value)
+		cicularDoublyLinkedList.prepend(value)
 		return
 	}
 
-	if position > doublyLinkedList.length {
-		doublyLinkedList.append(value)
+	if position > cicularDoublyLinkedList.length {
+		cicularDoublyLinkedList.append(value)
 		return
 	}
 
-	ptr := doublyLinkedList.head
+	ptr := cicularDoublyLinkedList.head
 	for i := 0; i < position; i++ {
 		if i == position-1 {
 			newNode := Node{}
@@ -80,7 +80,7 @@ func (doublyLinkedList *DoublyLinkedList) insert(position, value int) {
 			newNode.prev = ptr.prev
 			ptr.prev.next = &newNode
 			ptr.prev = &newNode
-			doublyLinkedList.length++
+			cicularDoublyLinkedList.length++
 			return
 		}
 		ptr = ptr.next
@@ -88,45 +88,45 @@ func (doublyLinkedList *DoublyLinkedList) insert(position, value int) {
 }
 
 // Remove a value from beginning of the list
-func (doublyLinkedList *DoublyLinkedList) removeFromBeginning() {
-	if doublyLinkedList.length == 0 {
+func (cicularDoublyLinkedList *CircularDoublyLinkedList) removeFromBeginning() {
+	if cicularDoublyLinkedList.length == 0 {
 		fmt.Println("Linked List is empty")
 		return
 	}
 
-	prevNode := doublyLinkedList.head.prev
-	nextNode := doublyLinkedList.head.next
+	prevNode := cicularDoublyLinkedList.head.prev
+	nextNode := cicularDoublyLinkedList.head.next
 	prevNode.next = nextNode
 	nextNode.prev = prevNode
-	doublyLinkedList.head = nextNode
-	doublyLinkedList.length--
+	cicularDoublyLinkedList.head = nextNode
+	cicularDoublyLinkedList.length--
 	return
 }
 
 // Remove a value from end of the list
-func (doublyLinkedList *DoublyLinkedList) removeFromEnd() {
-	if doublyLinkedList.length == 0 {
+func (cicularDoublyLinkedList *CircularDoublyLinkedList) removeFromEnd() {
+	if cicularDoublyLinkedList.length == 0 {
 		fmt.Println("Linked List is empty")
 		return
 	}
 
-	prevNode := doublyLinkedList.tail.prev
-	nextNode := doublyLinkedList.tail.next
+	prevNode := cicularDoublyLinkedList.tail.prev
+	nextNode := cicularDoublyLinkedList.tail.next
 	prevNode.next = nextNode
 	nextNode.prev = prevNode
-	doublyLinkedList.tail = prevNode
-	doublyLinkedList.length--
+	cicularDoublyLinkedList.tail = prevNode
+	cicularDoublyLinkedList.length--
 	return
 }
 
 // Remove a value from a specific position
-func (doublyLinkedList *DoublyLinkedList) remove(position int) {
-	if position < 0 || position > doublyLinkedList.length {
+func (cicularDoublyLinkedList *CircularDoublyLinkedList) remove(position int) {
+	if position < 0 || position > cicularDoublyLinkedList.length {
 		fmt.Println("Error: Invalid position")
 		return
 	}
 
-	ptr := doublyLinkedList.head
+	ptr := cicularDoublyLinkedList.head
 
 	for i := 0; i < position; i++ {
 		if i == position-1 {
@@ -134,30 +134,30 @@ func (doublyLinkedList *DoublyLinkedList) remove(position int) {
 			nextNode := ptr.next
 			prevNode.next = nextNode
 			nextNode.prev = prevNode
-			doublyLinkedList.length--
+			cicularDoublyLinkedList.length--
 			return
 		}
 		ptr = ptr.next
 	}
 }
 
-func (doublyLinkedList *DoublyLinkedList) display() {
-	if doublyLinkedList.length == 0 {
+func (cicularDoublyLinkedList *CircularDoublyLinkedList) display() {
+	if cicularDoublyLinkedList.length == 0 {
 		fmt.Println("Linked list is empty")
 		return
 	}
 
-	ptr := doublyLinkedList.head
-	for i := 0; i < doublyLinkedList.length; i++ {
+	ptr := cicularDoublyLinkedList.head
+	for i := 0; i < cicularDoublyLinkedList.length; i++ {
 		fmt.Print(ptr.value, " ")
 		ptr = ptr.next
 	}
-	fmt.Printf("\nLength\n: %d", doublyLinkedList.length)
+	fmt.Printf("\nLength\n: %d", cicularDoublyLinkedList.length)
 	return
 }
 
 func main() {
-	dll := DoublyLinkedList{}
+	dll := CircularDoublyLinkedList{}
 	dll.append(10)
 	dll.append(1)
 	dll.append(0)
