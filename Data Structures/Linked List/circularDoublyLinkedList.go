@@ -15,22 +15,22 @@ type CircularDoublyLinkedList struct {
 }
 
 // Add a value to end of the list
-func (doublyLinkedlist *CircularDoublyLinkedList) append(value int) {
+func (cicularDoublyLinkedList *CircularDoublyLinkedList) append(value int) {
 	newNode := Node{}
 	newNode.value = value
-	if doublyLinkedlist.length == 0 {
-		doublyLinkedlist.head = &newNode
-		doublyLinkedlist.tail = &newNode
-		doublyLinkedlist.length++
+	if cicularDoublyLinkedList.length == 0 {
+		cicularDoublyLinkedList.head = &newNode
+		cicularDoublyLinkedList.tail = &newNode
+		cicularDoublyLinkedList.length++
 		return
 	}
 
-	newNode.next = doublyLinkedlist.head
-	newNode.prev = doublyLinkedlist.tail
-	doublyLinkedlist.head.prev = &newNode
-	doublyLinkedlist.tail.next = &newNode
-	doublyLinkedlist.tail = &newNode
-	doublyLinkedlist.length++
+	newNode.next = cicularDoublyLinkedList.head
+	newNode.prev = cicularDoublyLinkedList.tail
+	cicularDoublyLinkedList.head.prev = &newNode
+	cicularDoublyLinkedList.tail.next = &newNode
+	cicularDoublyLinkedList.tail = &newNode
+	cicularDoublyLinkedList.length++
 	return
 }
 
@@ -152,7 +152,7 @@ func (cicularDoublyLinkedList *CircularDoublyLinkedList) display() {
 		fmt.Print(ptr.value, " ")
 		ptr = ptr.next
 	}
-	fmt.Printf("\nLength\n: %d", cicularDoublyLinkedList.length)
+	fmt.Printf("\nLength: %d", cicularDoublyLinkedList.length)
 	return
 }
 
