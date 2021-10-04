@@ -10,7 +10,6 @@ type Node struct {
 
 type DoublyLinkedList struct {
 	head   *Node
-	tail   *Node
 	length int
 }
 
@@ -21,14 +20,17 @@ func (doublyLinkedList *DoublyLinkedList) append(value int) {
 
 	if doublyLinkedList.length == 0 {
 		doublyLinkedList.head = &newNode
-		doublyLinkedList.tail = &newNode
 		doublyLinkedList.length++
 		return
 	}
 
-	newNode.prev = doublyLinkedList.tail
-	doublyLinkedList.tail.next = &newNode
-	doublyLinkedList.tail = &newNode
+	ptr := doublyLinkedList.head
+	for ptr.next != nil {
+		ptr = ptr.next
+	}
+
+	newNode.prev = ptr
+	ptr.next = &newNode
 	doublyLinkedList.length++
 	return
 }
@@ -39,7 +41,6 @@ func (doublyLinkedList *DoublyLinkedList) prepend(value int) {
 	newNode.value = value
 	if doublyLinkedList.length == 0 {
 		doublyLinkedList.head = &newNode
-		doublyLinkedList.tail = &newNode
 		doublyLinkedList.length++
 		return
 	}
@@ -100,8 +101,12 @@ func (doublyLinkedList *DoublyLinkedList) removeFromEnd() {
 		return
 	}
 
-	doublyLinkedList.tail = doublyLinkedList.tail.prev
-	doublyLinkedList.tail.next = nil
+	ptr := doublyLinkedList.head
+	for ptr.next != nil {
+		ptr = ptr.next
+	}
+	prevNode := ptr.prev
+	prevNode.next = nil
 	doublyLinkedList.length--
 	return
 }
@@ -156,5 +161,6 @@ func main() {
 	dll.insert(3, 8)
 	dll.insert(1, 0)
 	dll.remove(4)
+	dll.removeFromEnd()
 	dll.print()
 }
