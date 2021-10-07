@@ -2,7 +2,7 @@
 
 Data Structures and Algorithms implemented using Golang
 
-###Data Structures
+### Data Structures
 1. [Stack](https://github.com/amljs/Golang-DS-and-Algo/tree/master/Data%20Structures/Stack)
     - [Stack using array](https://github.com/amljs/Golang-DS-and-Algo/blob/master/Data%20Structures/Stack/stack.go)
     - [Stack using Linked list](https://github.com/amljs/Golang-DS-and-Algo/blob/master/Data%20Structures/Stack/stack_Linkedlist.go)
