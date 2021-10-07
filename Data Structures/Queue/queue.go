@@ -16,12 +16,11 @@ func (queue *Queue) enqueue(value int) {
 		return
 	}
 
-	queue.items = append(queue.items, value)
 	if queue.front == -1 {
-		queue.front, queue.rear = 0, 0
-	} else {
-		queue.rear++
+		queue.front = 0
 	}
+	queue.rear++
+	queue.items[queue.rear] = value
 	return
 }
 
@@ -31,9 +30,32 @@ func (queue *Queue) dequeue() {
 		return
 	}
 
-	queue.items = queue.items[1:]
-	queue.rear--
+	queue.front++
+	if queue.front > queue.rear {
+		queue.front, queue.rear = -1, -1
+	}
 	return
+}
+
+func (queue *Queue) display() {
+	if queue.front == -1 {
+		fmt.Println("Queue is emtpy")
+		return
+	}
+
+	for i := queue.front; i < queue.rear; i++ {
+		fmt.Print(queue.items[i], " ")
+	}
+	fmt.Print(queue.items[queue.rear])
+}
+
+func (queue *Queue) peek() {
+	if queue.front == -1 {
+		fmt.Println("Queue is emtpy")
+		return
+	}
+
+	fmt.Println(queue.items[queue.front])
 }
 
 func (queue *Queue) isEmtpy() {
@@ -48,12 +70,13 @@ func (queue *Queue) isFull() {
 	if queue.rear == size-1 {
 		fmt.Println("Queue is full")
 	} else {
-		fmt.Println("Queue is no full")
+		fmt.Println("Queue is not full")
 	}
 }
 
 func main() {
 	q := Queue{
+		items: make([]int, size),
 		front: -1,
 		rear:  -1,
 	}
@@ -62,6 +85,9 @@ func main() {
 	q.enqueue(2)
 	q.enqueue(7)
 	q.dequeue()
-	q.isFull()
-	q.isEmtpy()
+	q.enqueue(6)
+	q.enqueue(1)
+	q.dequeue()
+	q.peek()
+	q.display()
 }
