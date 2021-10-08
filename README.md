@@ -15,3 +15,5 @@ Data Structures and Algorithms implemented using Golang
     - [Double linked list](https://github.com/amljs/Golang-DS-and-Algo/blob/master/Data%20Structures/Linked%20List/doublyLinkedList.go)
     - [Circular linked list](https://github.com/amljs/Golang-DS-and-Algo/blob/master/Data%20Structures/Linked%20List/circularLinkedList.go)
     - [Double circular linked list](https://github.com/amljs/Golang-DS-and-Algo/blob/master/Data%20Structures/Linked%20List/circularDoublyLinkedList.go)
+4. [Tree](https://github.com/amljs/Golang-DS-and-Algo/tree/master/Data%20Structures/Tree)
+    - [Binary search tree](https://github.com/amljs/Golang-DS-and-Algo/blob/master/Data%20Structures/Tree/binarySearchTree.go)
