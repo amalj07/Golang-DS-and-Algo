@@ -17,10 +17,10 @@ func (linkedList *LinkedList) prepend(value int) {
 	newNode := Node{}
 	newNode.value = value
 
-	if linkedList.length == 0 {
+	if linkedList.head == nil {
 		newNode.next = nil
-		linkedList.length++
-		return
+	} else {
+		newNode.next = linkedList.head
 	}
 
 	newNode.next = linkedList.head
@@ -35,7 +35,7 @@ func (linkedList *LinkedList) append(value int) {
 	newNode.value = value
 	newNode.next = nil
 
-	if linkedList.length == 0 {
+	if linkedList.head == nil {
 		linkedList.head = &newNode
 		linkedList.length++
 		return
@@ -43,14 +43,12 @@ func (linkedList *LinkedList) append(value int) {
 
 	ptr := linkedList.head
 
-	for i := 0; i < linkedList.length; i++ {
-		if ptr.next == nil {
-			ptr.next = &newNode
-			linkedList.length++
-			return
-		}
+	for ptr.next != nil {
 		ptr = ptr.next
 	}
+
+	ptr.next = &newNode
+	linkedList.length++
 }
 
 // Add value to specified index of Linked list
@@ -132,26 +130,25 @@ func (linkedList *LinkedList) removeFromEnd() {
 	}
 
 	ptr := linkedList.head
-	for i := 0; i < linkedList.length-1; i++ {
-		if i == linkedList.length-2 {
-			ptr.next = nil
-			linkedList.length--
-			return
-		}
+	for ptr.next.next != nil {
 		ptr = ptr.next
 	}
+
+	ptr.next = nil
+	linkedList.length--
 }
 
 func (linkedList *LinkedList) display() {
-	if linkedList.length == 0 {
+	if linkedList.head == nil {
 		fmt.Println("Linked list is empty")
 		return
 	}
 	ptr := linkedList.head
-	for i := 0; i < linkedList.length; i++ {
+	for ptr.next != nil {
 		fmt.Print(ptr.value, " ")
 		ptr = ptr.next
 	}
+	fmt.Print(ptr.value)
 	fmt.Printf("\nLength: %d\n", linkedList.length)
 }
 

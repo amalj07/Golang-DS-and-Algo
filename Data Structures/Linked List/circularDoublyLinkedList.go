@@ -18,7 +18,7 @@ type CircularDoublyLinkedList struct {
 func (cicularDoublyLinkedList *CircularDoublyLinkedList) append(value int) {
 	newNode := Node{}
 	newNode.value = value
-	if cicularDoublyLinkedList.length == 0 {
+	if cicularDoublyLinkedList.head == nil {
 		cicularDoublyLinkedList.head = &newNode
 		cicularDoublyLinkedList.tail = &newNode
 		cicularDoublyLinkedList.length++
@@ -38,7 +38,7 @@ func (cicularDoublyLinkedList *CircularDoublyLinkedList) append(value int) {
 func (cicularDoublyLinkedList *CircularDoublyLinkedList) prepend(value int) {
 	newNode := Node{}
 	newNode.value = value
-	if cicularDoublyLinkedList.length == 0 {
+	if cicularDoublyLinkedList.head == nil {
 		cicularDoublyLinkedList.head = &newNode
 		cicularDoublyLinkedList.tail = &newNode
 		cicularDoublyLinkedList.length++
@@ -89,7 +89,7 @@ func (cicularDoublyLinkedList *CircularDoublyLinkedList) insert(position, value 
 
 // Remove a value from beginning of the list
 func (cicularDoublyLinkedList *CircularDoublyLinkedList) removeFromBeginning() {
-	if cicularDoublyLinkedList.length == 0 {
+	if cicularDoublyLinkedList.head == nil {
 		fmt.Println("Linked List is empty")
 		return
 	}
@@ -105,7 +105,7 @@ func (cicularDoublyLinkedList *CircularDoublyLinkedList) removeFromBeginning() {
 
 // Remove a value from end of the list
 func (cicularDoublyLinkedList *CircularDoublyLinkedList) removeFromEnd() {
-	if cicularDoublyLinkedList.length == 0 {
+	if cicularDoublyLinkedList.head == nil {
 		fmt.Println("Linked List is empty")
 		return
 	}
@@ -142,16 +142,17 @@ func (cicularDoublyLinkedList *CircularDoublyLinkedList) remove(position int) {
 }
 
 func (cicularDoublyLinkedList *CircularDoublyLinkedList) display() {
-	if cicularDoublyLinkedList.length == 0 {
+	if cicularDoublyLinkedList.head == nil {
 		fmt.Println("Linked list is empty")
 		return
 	}
 
 	ptr := cicularDoublyLinkedList.head
-	for i := 0; i < cicularDoublyLinkedList.length; i++ {
+	for ptr.next != cicularDoublyLinkedList.head {
 		fmt.Print(ptr.value, " ")
 		ptr = ptr.next
 	}
+	fmt.Print(ptr.value)
 	fmt.Printf("\nLength: %d", cicularDoublyLinkedList.length)
 	return
 }

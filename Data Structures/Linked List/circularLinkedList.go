@@ -16,7 +16,7 @@ func (circularLinkedList *CircularLinkedList) append(value int) {
 	newNode := Node{}
 	newNode.value = value
 
-	if circularLinkedList.length == 0 {
+	if circularLinkedList.head == nil {
 		circularLinkedList.head = &newNode
 		newNode.next = &newNode
 		circularLinkedList.length++
@@ -38,7 +38,7 @@ func (circularLinkedList *CircularLinkedList) prepend(value int) {
 	newNode := Node{}
 	newNode.value = value
 
-	if circularLinkedList.length == 0 {
+	if circularLinkedList.head == nil {
 		circularLinkedList.head = &newNode
 		newNode.next = &newNode
 		circularLinkedList.length++
@@ -79,7 +79,7 @@ func (circularLinkedList *CircularLinkedList) insert(position, value int) {
 }
 
 func (circularLinkedList *CircularLinkedList) removeFromBeginning() {
-	if circularLinkedList.length == 0 {
+	if circularLinkedList.head == nil {
 		fmt.Println("Error: Linked list is empty")
 		return
 	}
@@ -96,7 +96,7 @@ func (circularLinkedList *CircularLinkedList) removeFromBeginning() {
 }
 
 func (circularLinkedList *CircularLinkedList) removeFromEnd() {
-	if circularLinkedList.length == 0 {
+	if circularLinkedList.head == nil {
 		fmt.Println("Error: Linked list is empty")
 		return
 	}
@@ -138,7 +138,7 @@ func (circularLinkedList *CircularLinkedList) remove(position int) {
 }
 
 func (circularLinkedList *CircularLinkedList) display() {
-	if circularLinkedList.length == 0 {
+	if circularLinkedList.head == nil {
 		fmt.Print("Linked list is empty")
 		return
 	}

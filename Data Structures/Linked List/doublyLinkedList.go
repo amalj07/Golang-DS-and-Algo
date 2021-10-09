@@ -18,7 +18,7 @@ func (doublyLinkedList *DoublyLinkedList) append(value int) {
 	newNode := Node{}
 	newNode.value = value
 
-	if doublyLinkedList.length == 0 {
+	if doublyLinkedList.head == nil {
 		doublyLinkedList.head = &newNode
 		doublyLinkedList.length++
 		return
@@ -39,7 +39,7 @@ func (doublyLinkedList *DoublyLinkedList) append(value int) {
 func (doublyLinkedList *DoublyLinkedList) prepend(value int) {
 	newNode := Node{}
 	newNode.value = value
-	if doublyLinkedList.length == 0 {
+	if doublyLinkedList.head == nil {
 		doublyLinkedList.head = &newNode
 		doublyLinkedList.length++
 		return
@@ -96,7 +96,7 @@ func (doublyLinkedList *DoublyLinkedList) removeFromBeginning() {
 }
 
 func (doublyLinkedList *DoublyLinkedList) removeFromEnd() {
-	if doublyLinkedList.length == 0 {
+	if doublyLinkedList.head == nil {
 		fmt.Println("Linked list empty")
 		return
 	}
@@ -141,16 +141,17 @@ func (doublyLinkedList *DoublyLinkedList) remove(position int) {
 
 func (doublyLinkedList *DoublyLinkedList) print() {
 
-	if doublyLinkedList.length == 0 {
+	if doublyLinkedList.head == nil {
 		fmt.Println("Linked list is empty")
 		return
 	}
 
 	ptr := doublyLinkedList.head
-	for i := 0; i < doublyLinkedList.length; i++ {
+	for ptr.next != nil {
 		fmt.Print(ptr.value, " ")
 		ptr = ptr.next
 	}
+	fmt.Print(ptr.value)
 }
 func main() {
 	dll := DoublyLinkedList{}
