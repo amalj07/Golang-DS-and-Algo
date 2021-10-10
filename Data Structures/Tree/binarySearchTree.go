@@ -66,6 +66,54 @@ func (binarySearchTree *BinarySearchTree) search(value int) *Node {
 	return nil
 }
 
+func (binarySearchTree *BinarySearchTree) delete(value int) {
+	if binarySearchTree.root == nil {
+		fmt.Println("Tree is emtpy")
+		return
+	}
+
+	currentNode := binarySearchTree.root
+	var parentNode *Node
+	for currentNode != nil {
+		if value < currentNode.value {
+			parentNode = currentNode
+			currentNode = currentNode.left
+		} else if value > currentNode.value {
+			parentNode = currentNode
+			currentNode = currentNode.right
+		} else {
+			// Node has zero child
+			if currentNode.left == nil && currentNode.right == nil {
+				if parentNode.value > currentNode.value {
+					parentNode.left = nil
+					return
+				} else {
+					parentNode.right = nil
+					return
+				}
+			} else if currentNode.right != nil || currentNode.left != nil {
+				if parentNode.value > currentNode.value {
+					if currentNode.left != nil {
+						parentNode.left = currentNode.left
+						return
+					} else {
+						parentNode.left = currentNode.right
+						return
+					}
+				} else {
+					if currentNode.left != nil {
+						parentNode.right = currentNode.left
+						return
+					} else {
+						parentNode.right = currentNode.right
+						return
+					}
+				}
+			}
+		}
+	}
+}
+
 func main() {
 	bst := BinarySearchTree{}
 
@@ -78,5 +126,7 @@ func main() {
 	bst.insert(43)
 	bst.insert(87)
 	bst.insert(39)
-	fmt.Println(bst.search(43))
+	bst.insert(4)
+	bst.delete(43)
+	fmt.Println(bst.search(21))
 }
