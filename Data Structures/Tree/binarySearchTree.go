@@ -83,8 +83,9 @@ func (binarySearchTree *BinarySearchTree) delete(value int) {
 			parentNode = currentNode
 			currentNode = currentNode.right
 		} else { // Delete the node (value == currentNode.value)
+
+			// Tree have only one node(root node only)
 			if currentNode == binarySearchTree.root && binarySearchTree.root.left == nil && binarySearchTree.root.right == nil {
-				// Tree have only one node(root node only)
 				binarySearchTree.root = nil
 				return
 			}
@@ -122,6 +123,15 @@ func (binarySearchTree *BinarySearchTree) delete(value int) {
 	fmt.Println("Failed to delete: Invalid value")
 }
 
+func (binarySearchTree *BinarySearchTree) print(node *Node) {
+	// Tree is printed using inorder tree traversal
+	if node != nil {
+		binarySearchTree.print(node.left)
+		fmt.Print(node.value, " ")
+		binarySearchTree.print(node.right)
+	}
+}
+
 func main() {
 	bst := BinarySearchTree{}
 
@@ -135,5 +145,6 @@ func main() {
 	bst.insert(87)
 	bst.insert(39)
 	bst.insert(4)
-	bst.delete(50)
+	bst.delete(53)
+	bst.print(bst.root)
 }
