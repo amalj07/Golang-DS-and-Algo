@@ -83,36 +83,28 @@ func (binarySearchTree *BinarySearchTree) delete(value int) {
 			parentNode = currentNode
 			currentNode = currentNode.right
 		} else { // Delete the node (value == currentNode.value)
-			if currentNode.left == nil && currentNode.right == nil {
-				// Node has zero child
-				if parentNode.value > currentNode.value {
-					parentNode.left = nil
-					return
-				} else {
-					parentNode.right = nil
-					return
-				}
-			} else if currentNode.right != nil || currentNode.left != nil {
-				// Node has one child
-				if parentNode.value > currentNode.value {
-					if currentNode.left != nil {
-						parentNode.left = currentNode.left
-						return
-					} else {
-						parentNode.left = currentNode.right
-						return
-					}
-				} else {
+			if currentNode == binarySearchTree.root && binarySearchTree.root.left == nil && binarySearchTree.root.right == nil {
+				// Tree have only one node(root node only)
+				binarySearchTree.root = nil
+				return
+			}
+
+			if currentNode.left == nil || currentNode.right == nil {
+				if parentNode.value < currentNode.value {
 					if currentNode.left != nil {
 						parentNode.right = currentNode.left
-						return
 					} else {
 						parentNode.right = currentNode.right
-						return
+					}
+				} else {
+					if currentNode.left != nil {
+						parentNode.left = currentNode.left
+					} else {
+						parentNode.left = currentNode.right
 					}
 				}
+				return
 			} else {
-				// Node has two children
 				nodeToDelete := currentNode
 				parentNode = currentNode
 				// Find the largest node in the subtree
@@ -127,6 +119,7 @@ func (binarySearchTree *BinarySearchTree) delete(value int) {
 			}
 		}
 	}
+	fmt.Println("Failed to delete: Invalid value")
 }
 
 func main() {
@@ -142,8 +135,5 @@ func main() {
 	bst.insert(87)
 	bst.insert(39)
 	bst.insert(4)
-	fmt.Println(bst.search(53))
-	fmt.Println(bst.search(21))
-	bst.delete(7)
-	fmt.Println(bst.search(53))
+	bst.delete(50)
 }
