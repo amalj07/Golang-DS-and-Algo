@@ -53,8 +53,9 @@ func (maxheap *MaxHeap) extract() int {
 			parentIndex = rightChildIndex
 			leftChildIndex = 2*parentIndex + 1
 			rightChildIndex = 2*parentIndex + 2
-		} else {
+		} else { // Both child are equal
 			if maxheap.data[parentIndex] < maxheap.data[leftChildIndex] {
+				// Parent less than left child(swap parent and left child)
 				maxheap.data[parentIndex], maxheap.data[leftChildIndex] = maxheap.data[leftChildIndex], maxheap.data[parentIndex]
 				parentIndex = leftChildIndex
 				leftChildIndex = 2*parentIndex + 1
