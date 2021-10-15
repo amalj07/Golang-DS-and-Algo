@@ -21,3 +21,5 @@ Data Structures and Algorithms implemented using Golang
     - [Max heap](https://github.com/amljs/Golang-DS-and-Algo/blob/master/Data%20Structures/Heap/Heap.go)
 6. [Trie](https://github.com/amljs/Golang-DS-and-Algo/tree/master/Data%20Structures/Trie)
     - [Trie](https://github.com/amljs/Golang-DS-and-Algo/blob/master/Data%20Structures/Trie/trie.go)
+6. [Graph](https://github.com/amljs/Golang-DS-and-Algo/tree/master/Data%20Structures/Graph)
+    - [Graph](https://github.com/amljs/Golang-DS-and-Algo/blob/master/Data%20Structures/Graph/graph.go)
