@@ -23,3 +23,9 @@ Data Structures and Algorithms implemented using Golang
     - [Trie](https://github.com/amljs/Golang-DS-and-Algo/blob/master/Data%20Structures/Trie/trie.go)
 6. [Graph](https://github.com/amljs/Golang-DS-and-Algo/tree/master/Data%20Structures/Graph)
     - [Graph](https://github.com/amljs/Golang-DS-and-Algo/blob/master/Data%20Structures/Graph/graph.go)
+
+
+### Algorithms
+
+1. [Bubble Sort](https://github.com/amljs/Golang-DS-and-Algo/tree/master/Algorithms/Bubble%20%Sort)
+    - [Bubble sort](https://github.com/amljs/Golang-DS-and-Algo/tree/master/Algorithms/Bubble%20%Sort/bubbleSort.go)
