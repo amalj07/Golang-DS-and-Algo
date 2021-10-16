@@ -29,3 +29,5 @@ Data Structures and Algorithms implemented using Golang
     - [Bubble sort](https://github.com/amljs/Golang-DS-and-Algo/tree/master/Algorithms/Bubble%20Sort/bubbleSort.go)
 2. [Selection Sort](https://github.com/amljs/Golang-DS-and-Algo/tree/master/Algorithms/Selection%20Sort)
     - [Selection sort](https://github.com/amljs/Golang-DS-and-Algo/tree/master/Algorithms/Selection%20Sort/selectionSort.go)
+3. [Insertion Sort](https://github.com/amljs/Golang-DS-and-Algo/tree/master/Algorithms/Insertion%20Sort)
+    - [Insertion sort](https://github.com/amljs/Golang-DS-and-Algo/tree/master/Algorithms/Insertion%20Sort/insertionSort.go)
