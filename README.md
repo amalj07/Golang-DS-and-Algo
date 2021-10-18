@@ -33,3 +33,5 @@ Data Structures and Algorithms implemented using Golang
     - [Insertion sort](https://github.com/amljs/Golang-DS-and-Algo/tree/master/Algorithms/Insertion%20Sort/insertionSort.go)
 4. [Merge Sort](https://github.com/amljs/Golang-DS-and-Algo/tree/master/Algorithms/Merge%20Sort)
     - [Merge sort](https://github.com/amljs/Golang-DS-and-Algo/tree/master/Algorithms/Merge%20Sort/mergeSort.go)
+5. [Quick Sort](https://github.com/amljs/Golang-DS-and-Algo/tree/master/Algorithms/Quick%20Sort)
+    -[Quick sort](https://github.com/amljs/Golang-DS-and-Algo/tree/master/Algorithms/Quick%20Sort/quickSort.go)
