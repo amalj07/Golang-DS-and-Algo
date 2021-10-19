@@ -35,3 +35,4 @@ Data Structures and Algorithms implemented using Golang
     - [Binary search](https://github.com/amljs/Golang-DS-and-Algo/tree/master/Algorithms/Search/Binary%20Search)
         - [Binary search (Iteration)](https://github.com/amljs/Golang-DS-and-Algo/tree/master/Algorithms/Search/Binary%20Search/binarySearch.go)
         - [Binary search (Recursion)](https://github.com/amljs/Golang-DS-and-Algo/tree/master/Algorithms/Search/Binary%20Search/binarySearchWithRecursion.go)
+    - [Breadth First Search](https://github.com/amljs/Golang-DS-and-Algo/tree/master/Algorithms/Search/breadthFirstSearch.go)
