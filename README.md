@@ -1,6 +1,6 @@
-# Data Structures and Algorithms - Golang
+# Go DS & Algo
 
-Data Structures and Algorithms implemented using Golang
+Data Structures and Algorithms implemented using Go
 
 ### Data Structures
 1. [Stack](https://github.com/amljs/Golang-DS-and-Algo/tree/master/Data%20Structures/Stack)
