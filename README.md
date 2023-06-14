@@ -11,6 +11,7 @@ Data Structures and Algorithms implemented using Go
     - [Queue using Linked list](https://github.com/amljs/Golang-DS-and-Algo/blob/master/Data%20Structures/Queue/queue_LinkedList.go)
     - [Circular queue](https://github.com/amljs/Golang-DS-and-Algo/blob/master/Data%20Structures/Queue/circular_queue.go)
     - [Circular queue using Linked list](https://github.com/amalj07/Golang-DS-and-Algo/blob/master/Data%20Structures/Queue/circular_queue_LinkedList.go)
+    - [Priority queue using heap](https://github.com/amalj07/Golang-DS-and-Algo/blob/master/Data%20Structures/Queue/priority_queue.go)
 3. [Linked list](https://github.com/amljs/Golang-DS-and-Algo/tree/master/Data%20Structures/Linked%20List)
     - [Linked list](https://github.com/amljs/Golang-DS-and-Algo/blob/master/Data%20Structures/Linked%20List/linkedlist.go)
     - [Double linked list](https://github.com/amljs/Golang-DS-and-Algo/blob/master/Data%20Structures/Linked%20List/doublyLinkedList.go)
