@@ -31,12 +31,9 @@ func (pq *priorityQueue) deQueue() int {
 }
 
 func (pq *priorityQueue) heapify(queue []int, size, i int) {
-	fmt.Println("h", queue, i)
 	largest := i
 	leftChild := 2*i + 1
 	rightChild := 2*i + 2
-
-	fmt.Println(largest, leftChild, rightChild)
 
 	if leftChild <= size && queue[leftChild] > queue[largest] {
 		largest = leftChild
@@ -45,8 +42,6 @@ func (pq *priorityQueue) heapify(queue []int, size, i int) {
 	if rightChild <= size && queue[rightChild] > queue[largest] {
 		largest = rightChild
 	}
-
-	fmt.Println("lar", largest, "i", i)
 
 	if largest != i {
 		queue[i], queue[largest] = queue[largest], queue[i]
