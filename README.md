@@ -20,7 +20,7 @@ Data Structures and Algorithms implemented using Go
 4. [Tree](https://github.com/amljs/Golang-DS-and-Algo/tree/master/Data%20Structures/Tree)
     - [Binary search tree](https://github.com/amljs/Golang-DS-and-Algo/blob/master/Data%20Structures/Tree/binarySearchTree.go)
 5. [Heap](https://github.com/amljs/Golang-DS-and-Algo/tree/master/Data%20Structures/Heap)
-    - [Max heap](https://github.com/amljs/Golang-DS-and-Algo/blob/master/Data%20Structures/Heap/Heap.go)
+    - [Max heap](https://github.com/amljs/Golang-DS-and-Algo/blob/master/Data%20Structures/Heap/max_heap.go)
     - [Min heap](https://github.com/amljs/Golang-DS-and-Algo/blob/master/Data%20Structures/Heap/min_heap.go)
 6. [Trie](https://github.com/amljs/Golang-DS-and-Algo/tree/master/Data%20Structures/Trie)
     - [Trie](https://github.com/amljs/Golang-DS-and-Algo/blob/master/Data%20Structures/Trie/trie.go)
